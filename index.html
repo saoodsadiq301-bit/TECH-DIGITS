@@ -1,147 +1,2258 @@
-<!-- =========================
-     PREMIUM PORTFOLIO
-========================= -->
-<section class="portfolio-section" id="work">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <div class="portfolio-heading reveal">
-    <span class="section-tag">OUR WORK</span>
-    <h2>Selected <span>Projects</span></h2>
-    <p>Creative work crafted by the TechDigits team.</p>
-  </div>
+<meta name="description" content="Tech Digits — Digital solutions, websites, software, UI/UX, branding and growth solutions.">
 
-  <div class="portfolio-grid">
+<title>Tech Digits — Digital Solutions That Move Businesses Forward</title>
 
-    <!-- AMAZON 16 OZ -->
-    <article class="portfolio-card portfolio-wide reveal">
-      <div class="portfolio-image-wrap">
-        <img
-          src="https://image.thum.io/get/width/1400/crop/900/noanimate/https://www.behance.net/gallery/255164671/Amazon-Product-Listing-Design-16-oz-Brown-Ripple-Cup"
-          alt="Amazon Listing - 16 oz Brown Ripple Cup"
-          loading="lazy"
-        >
-        <div class="image-overlay"></div>
-      </div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-      <div class="portfolio-info">
-        <span>AMAZON LISTING</span>
-        <h3>Amazon Listing</h3>
-        <p>16 oz Brown Ripple Cup</p>
-      </div>
-    </article>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050509;
+    color:#f5f5f7;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --bg:#050509;
+    --bg2:#090912;
+    --card:#0d0d16;
+    --card2:#11111d;
+    --white:#ffffff;
+    --muted:#9b9ba9;
+    --line:rgba(255,255,255,.09);
+
+    --blue:#6c7cff;
+    --cyan:#38d9ff;
+    --purple:#9a6cff;
+
+    --glow:rgba(108,124,255,.28);
+    --max:1240px;
+}
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+.cursor-glow{
+    position:fixed;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108,124,255,.12) 0%,
+            rgba(56,217,255,.05) 30%,
+            transparent 70%
+        );
+
+    transform:translate(-50%,-50%);
+    transition:opacity .3s ease;
+}
+
+/* =========================================================
+   GRID BACKGROUND
+========================================================= */
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+    background-size:70px 70px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 75%
+    );
+}
+
+/* =========================================================
+   AMBIENT LIGHT
+========================================================= */
+
+.ambient{
+    position:fixed;
+    width:700px;
+    height:700px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:-1;
+    filter:blur(100px);
+    opacity:.16;
+}
+
+.ambient.one{
+    top:-300px;
+    left:-200px;
+    background:#4e5cff;
+}
+
+.ambient.two{
+    top:35%;
+    right:-350px;
+    background:#863cff;
+}
+
+.ambient.three{
+    bottom:-400px;
+    left:25%;
+    background:#00bfff;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container{
+    width:min(var(--max),92%);
+    margin:auto;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(5,5,9,.72);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.nav-inner{
+    height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:"Manrope",sans-serif;
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:var(--blue);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+}
+
+.nav-links a{
+    color:#bdbdc8;
+    font-size:14px;
+    font-weight:500;
+    transition:.3s ease;
+    position:relative;
+}
+
+.nav-links a:after{
+    content:"";
+    position:absolute;
+    bottom:-8px;
+    left:0;
+    width:0;
+    height:2px;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--blue),var(--cyan));
+    box-shadow:0 0 10px var(--blue);
+    transition:.3s ease;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.nav-links a:hover:after{
+    width:100%;
+}
+
+.nav-cta{
+    padding:12px 19px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50px;
+    background:rgba(255,255,255,.04);
+    transition:.3s ease;
+}
+
+.nav-cta:hover{
+    border-color:rgba(108,124,255,.7);
+    box-shadow:0 0 25px rgba(108,124,255,.2);
+    transform:translateY(-2px);
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:0;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    padding-top:82px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-content{
+    max-width:920px;
+    padding:110px 0 120px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    padding:8px 13px;
+
+    border:1px solid rgba(108,124,255,.28);
+    border-radius:100px;
+
+    background:rgba(108,124,255,.07);
+
+    color:#cdd1ff;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.4px;
+
+    box-shadow:0 0 35px rgba(108,124,255,.08);
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#6c7cff;
+    box-shadow:0 0 12px #6c7cff;
+}
+
+.hero h1{
+    margin-top:28px;
+
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(52px,8vw,104px);
+    line-height:.95;
+    letter-spacing:-6px;
+    font-weight:800;
+}
+
+.hero h1 .gradient{
+    background:linear-gradient(
+        100deg,
+        #ffffff 10%,
+        #8f9aff 50%,
+        #4be2ff 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    text-shadow:0 0 55px rgba(108,124,255,.16);
+}
+
+.hero-description{
+    margin-top:30px;
+    max-width:680px;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.75;
+}
+
+.hero-buttons{
+    margin-top:38px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn{
+    position:relative;
+    overflow:hidden;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    padding:15px 23px;
+
+    border-radius:10px;
+    font-size:14px;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.btn-primary{
+    color:#fff;
+
+    background:linear-gradient(
+        135deg,
+        #6374ff,
+        #835fff
+    );
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 30px rgba(108,124,255,.24),
+        inset 0 1px rgba(255,255,255,.2);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 0 45px rgba(108,124,255,.45),
+        0 15px 35px rgba(0,0,0,.3);
+}
+
+.btn-secondary{
+    color:#fff;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.btn-secondary:hover{
+    transform:translateY(-3px);
+    border-color:rgba(108,124,255,.55);
+    box-shadow:0 0 30px rgba(108,124,255,.16);
+}
+
+/* =========================================================
+   CLICK RIPPLE / GLOW
+========================================================= */
+
+.click-ripple{
+    position:fixed;
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+    z-index:9999;
+
+    background:rgba(111,128,255,.4);
+
+    box-shadow:
+        0 0 15px rgba(111,128,255,.8),
+        0 0 40px rgba(56,217,255,.5);
+
+    transform:translate(-50%,-50%) scale(0);
+
+    animation:ripple .7s ease-out forwards;
+}
+
+@keyframes ripple{
+    0%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(0);
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(12);
+    }
+}
+
+/* =========================================================
+   HERO ORBIT
+========================================================= */
+
+.hero-visual{
+    position:absolute;
+    right:-120px;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:520px;
+    height:520px;
+
+    opacity:.65;
+    pointer-events:none;
+}
+
+.orbit{
+    position:absolute;
+    inset:0;
+    border:1px solid rgba(108,124,255,.13);
+    border-radius:50%;
+    animation:spin 24s linear infinite;
+}
+
+.orbit:nth-child(2){
+    inset:60px;
+    border-color:rgba(56,217,255,.1);
+    animation-duration:18s;
+    animation-direction:reverse;
+}
+
+.orbit:nth-child(3){
+    inset:130px;
+    border-color:rgba(154,108,255,.13);
+    animation-duration:14s;
+}
+
+.orbit:after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#7182ff;
+    box-shadow:
+        0 0 15px #7182ff,
+        0 0 40px #7182ff;
+
+    top:10%;
+    left:50%;
+}
+
+.hero-core{
+    position:absolute;
+    inset:185px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108,124,255,.5),
+            rgba(108,124,255,.06) 45%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 100px rgba(108,124,255,.18);
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section{
+    padding:120px 0;
+    position:relative;
+}
+
+.section-label{
+    color:#7883ff;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:16px;
+}
+
+.section-title{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(36px,5vw,65px);
+    line-height:1;
+    letter-spacing:-3px;
+    max-width:780px;
+}
+
+.section-description{
+    color:var(--muted);
+    max-width:650px;
+    margin-top:20px;
+    line-height:1.8;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:24px;
+}
+
+.about-card{
+    min-height:420px;
+
+    padding:42px;
+
+    border:1px solid var(--line);
+    border-radius:24px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(108,124,255,.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #10101a,
+            #09090e
+        );
+
+    position:relative;
+    overflow:hidden;
+
+    transition:.4s ease;
+}
+
+.about-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(108,124,255,.25);
+    box-shadow:0 25px 80px rgba(0,0,0,.35);
+}
+
+.about-card h3{
+    font-family:"Manrope",sans-serif;
+    font-size:32px;
+    letter-spacing:-1px;
+}
+
+.about-card p{
+    color:var(--muted);
+    line-height:1.8;
+    margin-top:20px;
+}
+
+.about-number{
+    position:absolute;
+    bottom:-30px;
+    right:30px;
+
+    font-family:"Manrope",sans-serif;
+    font-size:180px;
+    line-height:1;
+    font-weight:800;
+
+    color:rgba(255,255,255,.025);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.stat{
+    min-height:200px;
+    padding:30px;
+
+    border:1px solid var(--line);
+    border-radius:20px;
+
+    background:rgba(255,255,255,.025);
+
+    transition:.35s ease;
+}
+
+.stat:hover{
+    border-color:rgba(108,124,255,.3);
+    background:rgba(108,124,255,.05);
+}
+
+.stat strong{
+    display:block;
+    font-family:"Manrope",sans-serif;
+    font-size:42px;
+    letter-spacing:-2px;
+}
+
+.stat span{
+    display:block;
+    color:var(--muted);
+    margin-top:8px;
+    font-size:13px;
+}
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-grid{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.service{
+    min-height:280px;
+
+    padding:30px;
+
+    border:1px solid var(--line);
+    border-radius:20px;
+
+    background:#0b0b12;
+
+    transition:.4s ease;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.service:before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+
+    top:-100px;
+    right:-80px;
+
+    background:rgba(108,124,255,.1);
+    filter:blur(30px);
+
+    transition:.4s ease;
+}
+
+.service:hover{
+    transform:translateY(-7px);
+    border-color:rgba(108,124,255,.35);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.3),
+        0 0 35px rgba(108,124,255,.06);
+}
+
+.service:hover:before{
+    transform:scale(1.5);
+}
+
+.service-number{
+    color:#656cff;
+    font-size:12px;
+    font-weight:700;
+}
+
+.service h3{
+    margin-top:55px;
+    font-family:"Manrope",sans-serif;
+    font-size:25px;
+    letter-spacing:-1px;
+}
+
+.service p{
+    margin-top:14px;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* =========================================================
+   WORK
+========================================================= */
+
+.work-grid{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.project{
+    min-height:420px;
+
+    border-radius:24px;
+    overflow:hidden;
+
+    border:1px solid var(--line);
+
+    background:#0b0b12;
+
+    position:relative;
+
+    transition:.4s ease;
+}
+
+.project:hover{
+    transform:translateY(-7px);
+    border-color:rgba(108,124,255,.3);
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+}
+
+.project-visual{
+    height:300px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.project:nth-child(1) .project-visual{
+    background:
+        radial-gradient(circle at 30% 30%,#4553ff,transparent 35%),
+        linear-gradient(135deg,#111638,#08090f);
+}
+
+.project:nth-child(2) .project-visual{
+    background:
+        radial-gradient(circle at 70% 30%,#9b51ff,transparent 35%),
+        linear-gradient(135deg,#20102e,#08090f);
+}
+
+.project:nth-child(3) .project-visual{
+    background:
+        radial-gradient(circle at 30% 70%,#00bddd,transparent 35%),
+        linear-gradient(135deg,#071f28,#08090f);
+}
+
+.project:nth-child(4) .project-visual{
+    background:
+        radial-gradient(circle at 70% 70%,#6675ff,transparent 35%),
+        linear-gradient(135deg,#14152f,#08090f);
+}
+
+.project-shape{
+    width:180px;
+    height:110px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    background:rgba(255,255,255,.07);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        0 0 50px rgba(108,124,255,.2);
+
+    transform:rotate(-8deg);
+
+    transition:.5s ease;
+}
+
+.project:hover .project-shape{
+    transform:rotate(0) scale(1.08);
+}
+
+.project-info{
+    padding:25px 28px;
+}
+
+.project-info h3{
+    font-family:"Manrope",sans-serif;
+    font-size:23px;
+}
+
+.project-info p{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process-grid{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+
+    border:1px solid var(--line);
+    border-radius:22px;
+    overflow:hidden;
+}
+
+.process{
+    padding:35px 28px;
+    background:#0b0b12;
+    border-right:1px solid var(--line);
+}
+
+.process:last-child{
+    border-right:0;
+}
+
+.process-number{
+    color:#6674ff;
+    font-size:12px;
+    font-weight:700;
+}
+
+.process h3{
+    margin-top:60px;
+    font-size:20px;
+}
+
+.process p{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* =========================================================
+   WHY US
+========================================================= */
+
+.why-grid{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.why{
+    padding:35px;
+
+    border:1px solid var(--line);
+    border-radius:20px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.035),
+        rgba(255,255,255,.012)
+    );
+}
+
+.why h3{
+    font-family:"Manrope",sans-serif;
+    font-size:21px;
+}
+
+.why p{
+    margin-top:12px;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+.testimonials{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.quote{
+    padding:32px;
+
+    border:1px solid var(--line);
+    border-radius:20px;
+
+    background:#0b0b12;
+}
+
+.stars{
+    color:#7e8aff;
+    letter-spacing:3px;
+}
+
+.quote p{
+    margin-top:22px;
+    color:#c4c4ce;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.person{
+    margin-top:28px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+}
+
+.person strong{
+    font-size:14px;
+}
+
+.person span{
+    display:block;
+    color:#777785;
+    font-size:12px;
+    margin-top:5px;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+    margin-top:55px;
+    max-width:900px;
+}
+
+.faq-item{
+    border-bottom:1px solid var(--line);
+}
+
+.faq-question{
+    width:100%;
+    background:none;
+    border:0;
+    color:white;
+
+    padding:25px 0;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    text-align:left;
+
+    font-family:"Manrope",sans-serif;
+    font-size:17px;
+    font-weight:600;
+
+    cursor:pointer;
+}
+
+.faq-icon{
+    color:#7582ff;
+    font-size:22px;
+    transition:.3s ease;
+}
+
+.faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .4s ease;
+}
+
+.faq-answer p{
+    padding:0 0 25px;
+    color:var(--muted);
+    line-height:1.8;
+    font-size:14px;
+}
+
+.faq-item.active .faq-answer{
+    max-height:180px;
+}
+
+.faq-item.active .faq-icon{
+    transform:rotate(45deg);
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-box{
+    margin-top:60px;
+
+    padding:70px;
+
+    border-radius:28px;
+
+    border:1px solid rgba(108,124,255,.22);
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(108,124,255,.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(56,217,255,.1),
+            transparent 35%
+        ),
+        #0b0b13;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.contact-box h2{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(40px,6vw,78px);
+    line-height:1;
+    letter-spacing:-4px;
+    max-width:800px;
+}
+
+.contact-box p{
+    margin-top:25px;
+    color:var(--muted);
+    max-width:600px;
+    line-height:1.8;
+}
+
+.contact-email{
+    display:inline-block;
+    margin-top:28px;
+
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(20px,3vw,32px);
+    font-weight:700;
+
+    color:#fff;
+
+    border-bottom:1px solid rgba(108,124,255,.5);
+    padding-bottom:5px;
+
+    transition:.3s ease;
+}
+
+.contact-email:hover{
+    color:#8d99ff;
+    text-shadow:0 0 25px rgba(108,124,255,.6);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:45px 0;
+
+    border-top:1px solid var(--line);
+}
+
+.footer-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.footer-copy{
+    color:#737380;
+    font-size:12px;
+}
+
+.footer-links{
+    display:flex;
+    gap:22px;
+}
+
+.footer-links a{
+    color:#8c8c99;
+    font-size:12px;
+    transition:.3s ease;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        position:absolute;
+        top:82px;
+        left:0;
+        width:100%;
+
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+
+        padding:25px 5%;
+
+        background:rgba(5,5,9,.97);
+        border-bottom:1px solid var(--line);
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-cta{
+        display:none;
+    }
+
+    .hero-visual{
+        right:-250px;
+        opacity:.35;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .process-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .process:nth-child(2){
+        border-right:0;
+    }
+
+    .process:nth-child(-n+2){
+        border-bottom:1px solid var(--line);
+    }
+
+    .testimonials{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .container{
+        width:90%;
+    }
+
+    section{
+        padding:85px 0;
+    }
+
+    .hero-content{
+        padding:90px 0;
+    }
+
+    .hero h1{
+        font-size:52px;
+        letter-spacing:-3px;
+    }
+
+    .hero-description{
+        font-size:15px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .services-grid,
+    .work-grid,
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process-grid{
+        grid-template-columns:1fr;
+    }
+
+    .process{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+    }
+
+    .process:last-child{
+        border-bottom:0;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .contact-box{
+        padding:40px 25px;
+    }
+
+    .contact-box h2{
+        letter-spacing:-2px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .cursor-glow{
+        display:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Ambient Background -->
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+<div class="ambient three"></div>
+
+<!-- Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
 
 
-    <!-- AMAZON 8 OZ -->
-    <article class="portfolio-card portfolio-wide reveal">
-      <div class="portfolio-image-wrap">
-        <img
-          src="https://image.thum.io/get/width/1400/crop/900/noanimate/https://www.behance.net/gallery/255162155/Amazon-Product-Listing-Design-8-oz-Black-Ripple-Cup"
-          alt="Amazon Listing - 8 oz Black Ripple Cup"
-          loading="lazy"
-        >
-        <div class="image-overlay"></div>
-      </div>
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
 
-      <div class="portfolio-info">
-        <span>AMAZON LISTING</span>
-        <h3>Amazon Listing</h3>
-        <p>8 oz Black Ripple Cup</p>
-      </div>
-    </article>
+<header class="navbar">
 
+<div class="container nav-inner">
 
-    <!-- SOCIAL MEDIA 1 -->
-    <article class="portfolio-card reveal">
-      <div class="portfolio-image-wrap social-image">
-        <img
-          src="https://image.thum.io/get/width/1200/crop/900/noanimate/https://www.behance.net/gallery/229533475/Social-Media-Post-Design"
-          alt="Social Media Post Design"
-          loading="lazy"
-        >
-        <div class="image-overlay"></div>
-      </div>
+<a href="#home" class="logo">
+    TECH<span>DIGITS</span>
+</a>
 
-      <div class="portfolio-info">
-        <span>SOCIAL MEDIA</span>
-        <h3>Social Media Post</h3>
-        <p>Creative Social Media Design</p>
-      </div>
-    </article>
+<nav class="nav-links" id="navLinks">
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#work">Work</a>
+<a href="#process">Process</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+<a href="#contact" class="nav-cta click-effect">
+    Let's Talk
+</a>
+
+<button class="menu-btn" id="menuBtn">
+    ☰
+</button>
+
+</div>
+
+</header>
 
 
-    <!-- SOCIAL MEDIA 2 -->
-    <article class="portfolio-card reveal">
-      <div class="portfolio-image-wrap social-image">
-        <img
-          src="https://image.thum.io/get/width/1200/crop/900/noanimate/https://www.behance.net/gallery/229532923/Social-Media-Post-Design"
-          alt="Social Media Post Design"
-          loading="lazy"
-        >
-        <div class="image-overlay"></div>
-      </div>
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-      <div class="portfolio-info">
-        <span>SOCIAL MEDIA</span>
-        <h3>Social Media Post</h3>
-        <p>Modern Marketing Creative</p>
-      </div>
-    </article>
+<main>
 
+<section class="hero" id="home">
 
-    <!-- SOCIAL MEDIA 3 -->
-    <article class="portfolio-card reveal">
-      <div class="portfolio-image-wrap social-image">
-        <img
-          src="https://image.thum.io/get/width/1200/crop/900/noanimate/https://www.behance.net/gallery/229447539/Social-Media-Post-Design"
-          alt="Social Media Post Design"
-          loading="lazy"
-        >
-        <div class="image-overlay"></div>
-      </div>
+<div class="container">
 
-      <div class="portfolio-info">
-        <span>SOCIAL MEDIA</span>
-        <h3>Social Media Post</h3>
-        <p>Brand Social Content</p>
-      </div>
-    </article>
+<div class="hero-content reveal">
 
+<div class="badge">
+    <span class="badge-dot"></span>
+    DIGITAL SOLUTIONS FOR MODERN BUSINESS
+</div>
 
-    <!-- LANDING PAGE -->
-    <article class="portfolio-card portfolio-wide reveal">
-      <div class="portfolio-image-wrap landing-image">
-        <img
-          src="https://image.thum.io/get/width/1400/crop/900/noanimate/https://www.behance.net/gallery/225679951/Landing-Page-Design"
-          alt="Landing Page Design"
-          loading="lazy"
-        >
-        <div class="image-overlay"></div>
-      </div>
+<h1>
+    We Build
+    <span class="gradient">Digital</span>
+    Experiences.
+</h1>
 
-      <div class="portfolio-info">
-        <span>UI / UX</span>
-        <h3>Landing Page Design</h3>
-        <p>Modern Website Interface</p>
-      </div>
-    </article>
+<p class="hero-description">
+    Tech Digits creates modern websites, software, digital experiences
+    and growth solutions designed to help ambitious businesses move
+    forward.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#contact" class="btn btn-primary click-effect">
+    Start a Project
+    <span>↗</span>
+</a>
+
+<a href="#work" class="btn btn-secondary click-effect">
+    Explore Our Work
+</a>
+
+</div>
+
+</div>
+
+</div>
 
 
-    <!-- LOGO -->
-    <article class="portfolio-card portfolio-wide reveal">
-      <div class="portfolio-image-wrap logo-image">
-        <img
-          src="https://image.thum.io/get/width/1400/crop/900/noanimate/https://www.behance.net/gallery/248745527/Steven-Noble-Illustrations-Logos-Collection-V"
-          alt="Logo and Branding Design"
-          loading="lazy"
-        >
-        <div class="image-overlay"></div>
-      </div>
+<div class="hero-visual">
 
-      <div class="portfolio-info">
-        <span>BRANDING</span>
-        <h3>Logo & Branding</h3>
-        <p>Professional Brand Identity</p>
-      </div>
-    </article>
+<div class="orbit"></div>
+<div class="orbit"></div>
+<div class="orbit"></div>
 
-  </div>
+<div class="hero-core"></div>
+
+</div>
+
 </section>
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-label reveal">
+    About Tech Digits
+</div>
+
+<h2 class="section-title reveal">
+    Technology should make business simpler, smarter and stronger.
+</h2>
+
+<p class="section-description reveal">
+    We combine strategy, design and technology to create digital
+    solutions that look great, work smoothly and support real business
+    goals.
+</p>
+
+
+<div class="about-grid">
+
+<div class="about-card reveal">
+
+<h3>
+    Digital thinking.<br>
+    Built for growth.
+</h3>
+
+<p>
+    Tech Digits is a digital solutions studio focused on creating
+    meaningful online experiences. From websites and interfaces to
+    software and digital growth, we bring creative thinking and
+    technology together.
+</p>
+
+<div class="about-number">
+    TD
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat reveal">
+    <strong>01</strong>
+    <span>Creative Strategy</span>
+</div>
+
+<div class="stat reveal">
+    <strong>02</strong>
+    <span>Modern Technology</span>
+</div>
+
+<div class="stat reveal">
+    <strong>03</strong>
+    <span>Human-Centered Design</span>
+</div>
+
+<div class="stat reveal">
+    <strong>04</strong>
+    <span>Long-Term Thinking</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     SERVICES
+======================================================= -->
+
+<section id="services">
+
+<div class="container">
+
+<div class="section-label reveal">
+    What We Do
+</div>
+
+<h2 class="section-title reveal">
+    Solutions built around your digital goals.
+</h2>
+
+<p class="section-description reveal">
+    From your first idea to a complete digital ecosystem, Tech Digits
+    helps turn complex requirements into clean and effective solutions.
+</p>
+
+
+<div class="services-grid">
+
+
+<div class="service reveal">
+    <span class="service-number">01 / WEB</span>
+    <h3>Web Development</h3>
+    <p>
+        High-performance, responsive websites designed around your
+        brand, audience and business objectives.
+    </p>
+</div>
+
+
+<div class="service reveal">
+    <span class="service-number">02 / SOFTWARE</span>
+    <h3>Software Solutions</h3>
+    <p>
+        Custom digital tools and software experiences designed to
+        improve workflows and solve business problems.
+    </p>
+</div>
+
+
+<div class="service reveal">
+    <span class="service-number">03 / UI UX</span>
+    <h3>UI / UX Design</h3>
+    <p>
+        Clean, intuitive interfaces that make digital products easier
+        and more enjoyable to use.
+    </p>
+</div>
+
+
+<div class="service reveal">
+    <span class="service-number">04 / BRAND</span>
+    <h3>Brand & Creative</h3>
+    <p>
+        Digital-first visual identities and creative systems that help
+        brands communicate with confidence.
+    </p>
+</div>
+
+
+<div class="service reveal">
+    <span class="service-number">05 / GROWTH</span>
+    <h3>Digital Marketing</h3>
+    <p>
+        Data-informed digital marketing strategies designed to build
+        visibility, engagement and sustainable growth.
+    </p>
+</div>
+
+
+<div class="service reveal">
+    <span class="service-number">06 / AI</span>
+    <h3>AI & Automation</h3>
+    <p>
+        Practical automation and AI-powered solutions that help
+        businesses save time and work more efficiently.
+    </p>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     WORK
+======================================================= -->
+
+<section id="work">
+
+<div class="container">
+
+<div class="section-label reveal">
+    Selected Work
+</div>
+
+<h2 class="section-title reveal">
+    Ideas turned into digital experiences.
+</h2>
+
+<p class="section-description reveal">
+    A selection of digital concepts showing how strategy, design and
+    technology can come together.
+</p>
+
+
+<div class="work-grid">
+
+
+<div class="project reveal">
+
+<div class="project-visual">
+    <div class="project-shape"></div>
+</div>
+
+<div class="project-info">
+    <h3>Digital Brand Experience</h3>
+    <p>Web Design · Development · Strategy</p>
+</div>
+
+</div>
+
+
+<div class="project reveal">
+
+<div class="project-visual">
+    <div class="project-shape"></div>
+</div>
+
+<div class="project-info">
+    <h3>Modern Business Platform</h3>
+    <p>UI/UX · Product Design · Development</p>
+</div>
+
+</div>
+
+
+<div class="project reveal">
+
+<div class="project-visual">
+    <div class="project-shape"></div>
+</div>
+
+<div class="project-info">
+    <h3>Growth-Focused Website</h3>
+    <p>Strategy · Design · Conversion</p>
+</div>
+
+</div>
+
+
+<div class="project reveal">
+
+<div class="project-visual">
+    <div class="project-shape"></div>
+</div>
+
+<div class="project-info">
+    <h3>Digital Product Concept</h3>
+    <p>UX · Interface · Technology</p>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     PROCESS
+======================================================= -->
+
+<section id="process">
+
+<div class="container">
+
+<div class="section-label reveal">
+    Our Process
+</div>
+
+<h2 class="section-title reveal">
+    From idea to launch, without the unnecessary complexity.
+</h2>
+
+
+<div class="process-grid">
+
+
+<div class="process reveal">
+
+<span class="process-number">01</span>
+
+<h3>Discover</h3>
+
+<p>
+    We understand your goals, audience, challenges and opportunities
+    before creating the solution.
+</p>
+
+</div>
+
+
+<div class="process reveal">
+
+<span class="process-number">02</span>
+
+<h3>Design</h3>
+
+<p>
+    We turn strategy into clear concepts, user experiences and
+    interfaces that feel purposeful.
+</p>
+
+</div>
+
+
+<div class="process reveal">
+
+<span class="process-number">03</span>
+
+<h3>Build</h3>
+
+<p>
+    Development brings the approved concept to life with responsive,
+    scalable and reliable technology.
+</p>
+
+</div>
+
+
+<div class="process reveal">
+
+<span class="process-number">04</span>
+
+<h3>Launch</h3>
+
+<p>
+    We test, refine and launch the final experience while keeping
+    future improvements in mind.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     WHY TECH DIGITS
+======================================================= -->
+
+<section>
+
+<div class="container">
+
+<div class="section-label reveal">
+    Why Tech Digits
+</div>
+
+<h2 class="section-title reveal">
+    More than technology. A partner for your next digital move.
+</h2>
+
+
+<div class="why-grid">
+
+
+<div class="why reveal">
+
+<h3>Strategy Before Execution</h3>
+
+<p>
+    We start by understanding the problem instead of jumping straight
+    into design or development.
+</p>
+
+</div>
+
+
+<div class="why reveal">
+
+<h3>Design With Purpose</h3>
+
+<p>
+    Every visual decision has a reason — from hierarchy and usability
+    to brand perception and conversion.
+</p>
+
+</div>
+
+
+<div class="why reveal">
+
+<h3>Technology That Fits</h3>
+
+<p>
+    We focus on practical technology choices that fit the project,
+    rather than adding complexity for the sake of it.
+</p>
+
+</div>
+
+
+<div class="why reveal">
+
+<h3>Built For The Future</h3>
+
+<p>
+    Our digital solutions are created with flexibility, scalability
+    and future improvements in mind.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     TESTIMONIALS
+======================================================= -->
+
+<section>
+
+<div class="container">
+
+<div class="section-label reveal">
+    Client Perspective
+</div>
+
+<h2 class="section-title reveal">
+    Built around clarity, collaboration and results.
+</h2>
+
+
+<div class="testimonials">
+
+
+<div class="quote reveal">
+
+<div class="stars">
+    ★★★★★
+</div>
+
+<p>
+    "The team understood the direction quickly and transformed our
+    ideas into a much cleaner digital experience."
+</p>
+
+<div class="person">
+    <strong>Business Client</strong>
+    <span>Digital Project</span>
+</div>
+
+</div>
+
+
+<div class="quote reveal">
+
+<div class="stars">
+    ★★★★★
+</div>
+
+<p>
+    "The design feels modern and professional, while the process stayed
+    clear from the beginning."
+</p>
+
+<div class="person">
+    <strong>Business Client</strong>
+    <span>Web Experience</span>
+</div>
+
+</div>
+
+
+<div class="quote reveal">
+
+<div class="stars">
+    ★★★★★
+</div>
+
+<p>
+    "Tech Digits helped us turn a complicated idea into something our
+    customers can understand and use."
+</p>
+
+<div class="person">
+    <strong>Business Client</strong>
+    <span>Technology Solution</span>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     FAQ
+======================================================= -->
+
+<section>
+
+<div class="container">
+
+<div class="section-label reveal">
+    FAQ
+</div>
+
+<h2 class="section-title reveal">
+    Questions, answered.
+</h2>
+
+
+<div class="faq">
+
+
+<div class="faq-item reveal">
+
+<button class="faq-question">
+    What does Tech Digits do?
+    <span class="faq-icon">+</span>
+</button>
+
+<div class="faq-answer">
+<p>
+    Tech Digits provides digital services including web development,
+    software solutions, UI/UX design, branding, digital marketing,
+    AI and automation.
+</p>
+</div>
+
+</div>
+
+
+<div class="faq-item reveal">
+
+<button class="faq-question">
+    Can you build a website from scratch?
+    <span class="faq-icon">+</span>
+</button>
+
+<div class="faq-answer">
+<p>
+    Yes. We can work from an existing concept, design reference,
+    brand identity or completely new idea.
+</p>
+</div>
+
+</div>
+
+
+<div class="faq-item reveal">
+
+<button class="faq-question">
+    Do you work with small businesses?
+    <span class="faq-icon">+</span>
+</button>
+
+<div class="faq-answer">
+<p>
+    Yes. Projects can be shaped around different business sizes,
+    requirements and digital goals.
+</p>
+</div>
+
+</div>
+
+
+<div class="faq-item reveal">
+
+<button class="faq-question">
+    How can I start a project?
+    <span class="faq-icon">+</span>
+</button>
+
+<div class="faq-answer">
+<p>
+    Simply send us an email describing your project, goals and
+    requirements. We can then discuss the next steps.
+</p>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="contact-box reveal">
+
+<div class="section-label">
+    Let's Work Together
+</div>
+
+<h2>
+    Have an idea?
+    <span class="gradient">Let's build it.</span>
+</h2>
+
+<p>
+    Tell us what you're working on and what you want to achieve.
+    We'd love to hear about your next digital project.
+</p>
+
+<a
+    href="mailto:thetechdigits@gmail.com"
+    class="contact-email click-effect"
+>
+    thetechdigits@gmail.com ↗
+</a>
+
+<div style="margin-top:32px;">
+
+<a
+    href="mailto:thetechdigits@gmail.com"
+    class="btn btn-primary click-effect"
+>
+    Start a Conversation
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+<div class="container footer-inner">
+
+<div class="footer-copy">
+    © <span id="year"></span> Tech Digits. All rights reserved.
+</div>
+
+<div class="footer-links">
+
+<a href="#home" class="click-effect">Home</a>
+<a href="#services" class="click-effect">Services</a>
+<a href="#work" class="click-effect">Work</a>
+<a href="#contact" class="click-effect">Contact</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+
+    menuBtn.textContent =
+        navLinks.classList.contains("open")
+        ? "✕"
+        : "☰";
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+        menuBtn.textContent = "☰";
+
+    });
+
+});
+
+
+/* =========================================================
+   MOUSE GLOW
+========================================================= */
+
+const cursorGlow =
+    document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove", (e) => {
+
+    cursorGlow.style.left = e.clientX + "px";
+    cursorGlow.style.top = e.clientY + "px";
+
+});
+
+
+/* =========================================================
+   CLICK GLOW EFFECT
+========================================================= */
+
+document.addEventListener("click", (e) => {
+
+    const ripple =
+        document.createElement("div");
+
+    ripple.className = "click-ripple";
+
+    ripple.style.left = e.clientX + "px";
+    ripple.style.top = e.clientY + "px";
+
+    document.body.appendChild(ripple);
+
+    setTimeout(() => {
+        ripple.remove();
+    }, 750);
+
+});
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+document.querySelectorAll(".faq-question")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const item =
+            button.parentElement;
+
+        document.querySelectorAll(".faq-item")
+        .forEach(other => {
+
+            if(other !== item){
+                other.classList.remove("active");
+            }
+
+        });
+
+        item.classList.toggle("active");
+
+    });
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document.querySelectorAll(".reveal")
+.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   BUTTON PRESS EFFECT
+========================================================= */
+
+document.querySelectorAll(".click-effect")
+.forEach(element => {
+
+    element.addEventListener("mousedown", () => {
+
+        element.style.transform =
+            "scale(.96)";
+
+    });
+
+    element.addEventListener("mouseup", () => {
+
+        element.style.transform =
+            "";
+
+    });
+
+    element.addEventListener("mouseleave", () => {
+
+        element.style.transform =
+            "";
+
+    });
+
+});
+
+
+</script>
+
+</body>
+</html>
